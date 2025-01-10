@@ -1,8 +1,8 @@
 // handle the lightbox
-function customGalleryLightbox(src, caption){
+function customGalleryLightbox(){
 
   //check for the lightbox
-  let lightBoxClass= 'custom-gallery-lightbox'
+  let lightboxClass= 'custom-gallery-lightbox'
   
 
   let galleryClass='custom-gallery';
@@ -20,7 +20,7 @@ function customGalleryLightbox(src, caption){
   
 
   //pull the lightbox object
-  let lightbox = document.getElementByClassName( lightboxClass );
+  let lightbox = document.getElementsByClassName( lightboxClass );
 
   //if there is no lightbox AND there are gallries
   //	setup lightbox, prepare the front-end, setup the state
@@ -32,7 +32,7 @@ function customGalleryLightbox(src, caption){
 	let temp = document.createElement('div')
 
 	//add the parent class
-	temp.classList.add = lightBoxClass
+	temp.className = lightboxClass
 
 	//setup image element
 	let imageEl = '<img />' 
@@ -49,14 +49,13 @@ function customGalleryLightbox(src, caption){
 	//setup control in wrapper
 	let controls = '<div class="' + controlsClass + '">' + arrowLeft + counter + arrowRight + '</div>'
 
-
 	//put it all together as DOM object
 	temp.innerHTML =  imageEl + controls 
+	console.log(temp)
 	
-	//append it to the fragment
-	while (temp.firstChild) {
-        	frag.appendChild(temp.firstChild);
-   	}
+	//append it to the fragment and append it to the top of the DOM
+	frag.appendChild(temp);
+   	document.body.insertBefore(frag, document.body.childNodes[0]);
 
 
 
@@ -121,4 +120,4 @@ function customGalleryLightbox(src, caption){
 
 
 
-
+customGalleryLightbox()
